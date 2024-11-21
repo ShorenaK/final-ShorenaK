@@ -14,7 +14,7 @@ public class User {
         this.name = name;
         this.email = email;
     }
-    public String getNme(){
+    public String getName(){
         return name;
     }
 
@@ -26,10 +26,10 @@ public class User {
         notifications.add(notification);
     }
 
-    public void displayNotifications() {
-        for (NotificationInterface notification : notifications) {
-            notification.send();
-        }
-    }
+    // public void displayNotifications() {
+    //     for (NotificationInterface notification : notifications) {
+    //         notification.send();
+    //     }
+    // }
 
 }
