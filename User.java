@@ -8,7 +8,8 @@ public class User {
 
     private String name;
     private String email;
-    private List<NotificationInterface> notifications = new ArrayList();
+    private List<NotificationInterface> notifications = new ArrayList<>();
+    private List<CallOut> callOuts = new ArrayList<>();
 
     public User(String name, String email){
         this.name = name;
@@ -26,10 +27,29 @@ public class User {
         notifications.add(notification);
     }
 
-    // public void displayNotifications() {
-    //     for (NotificationInterface notification : notifications) {
-    //         notification.send();
-    //     }
-    // }
+    public void displayNotifications() {
+        for (NotificationInterface notification : notifications) {
+            notification.send();
+        }
+    }
+
+    public CallOut sendCallout(String message, String receiverId){
+        CallOut newCallOut = new CallOut(this, message);
+        callOuts.add(newCallOut);
+        return newCallOut;
+
+     }
+
+
+// Collect each notification's message
+// Return the list of messages
+
+     public List<String> viewNotifications() {
+        List<String> messages = new ArrayList<>();
+        for (NotificationInterface notification : notifications) {
+            messages.add(notification.getMessage()); 
+        }
+        return messages; 
+    }
 
 }

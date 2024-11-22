@@ -2,8 +2,8 @@
 
  public interface NotificationInterface {
 
-//     void send();
-//     String getMessage();
+   void send();
+  String getMessage();
 //     User getTaragetUser();
 
 }

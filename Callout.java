@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Callout {
+public class CallOut {
+
+    private String id;
     private User creator;
     private String content;
     private CallOutStatus status;
@@ -9,7 +11,7 @@ public class Callout {
     private List<Reaction> reactions;
 
     // const
-    public Callout(User creator, String content){
+    public CallOut(User creator, String content){
         this.creator = creator;
         this.content = content;
         this.status = CallOutStatus.PENDING;
@@ -17,5 +19,9 @@ public class Callout {
         this.reactions = new ArrayList<>();
     }
 
-    
+    public String getId(){
+        
+    }
+
+    // void addReply(Reply reply);
 }
