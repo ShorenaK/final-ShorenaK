@@ -27,7 +27,10 @@ public class User {
         notifications.add(notification);
     }
 
-    public void displayNotifications() {
+    // Calls the send() method of each NotificationInterface object
+    // triggers the notifications to be sent via  email or SMS etc... .
+
+    public void sendNotifications() {
         for (NotificationInterface notification : notifications) {
             notification.send();
         }
@@ -40,8 +43,7 @@ public class User {
 
      }
 
-
-// Collect each notification's message
+// Collect each notification's message 
 // Return the list of messages
 
      public List<String> viewNotifications() {
@@ -50,6 +52,11 @@ public class User {
             messages.add(notification.getMessage()); 
         }
         return messages; 
+    }
+
+    @Override
+    public String toString() {
+        return "User{name='" + name + "', email='" + email + "'}";
     }
 
 }
