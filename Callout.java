@@ -8,7 +8,7 @@ import java.util.Date;
 public class CallOut implements UserAction{
 
     private String id;
-    private User creator;
+    private User sender;
     private User receiver;
     private String content;
     private CallOutStatus status;
@@ -17,15 +17,16 @@ public class CallOut implements UserAction{
     private String timestamp;
 
     // const
-    public CallOut(User creator, User receiver, String content) {
-        this.id = java.util.UUID.randomUUID().toString(); // Generate a unique ID
-        this.creator = creator;
+    public CallOut(User sender, User receiver, String content) {
+        //// Generate a unique ID
+        this.id = java.util.UUID.randomUUID().toString(); 
+        this.sender = sender;
         this.receiver = receiver;
         this.content = content;
         this.status = CallOutStatus.PENDING;
         this.replies = new ArrayList<>();
         this.reactions = new ArrayList<>();
-        this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()); // Current timestamp
+        this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()); 
     }
 
     @Override
@@ -62,8 +63,8 @@ public class CallOut implements UserAction{
     }
 
     @Override
-    public User getCreator() {
-        return creator;
+    public User getSender() {
+        return sender;
     }
 
     public String getId() {
@@ -80,6 +81,6 @@ public class CallOut implements UserAction{
 
     @Override
     public String toString() {
-        return "CallOut{id='" + id + "', creator=" + creator.getName() + ", content='" + content + "', status=" + status + ", replies=" + replies.size() + ", reactions=" + reactions.size() + "}";
+        return "CallOut{id='" + id + "', sender=" + sender.getName() + ", content='" + content + "', status=" + status + ", replies=" + replies.size() + ", reactions=" + reactions.size() + "}";
     }
 }

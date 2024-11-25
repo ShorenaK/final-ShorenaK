@@ -9,6 +9,6 @@ public interface UserAction{
     List<Reply> getReplies();
     List<Reaction> getReactions();
     String getContent();
-    User getCreator();
+    User getSender();
 
 }
