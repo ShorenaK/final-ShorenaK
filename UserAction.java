@@ -4,8 +4,8 @@ import java.util.List;
 // userAction
 
 public interface UserAction{
-    // void addReply(Reply reply);
-    // void addReaction(Reaction Reaction);
+    void addReply(Reply reply);
+    void addReaction(Reaction Reaction);
     List<Reply> getReplies();
     List<Reaction> getReactions();
     String getContent();
