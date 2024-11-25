@@ -15,4 +15,12 @@ public class Main{
         // Add notifications to the user
         user.addNotification(emailNotification);
         user.addNotification(phoneNotification);
+
+        // // View notifications
+        // List<String> messages = user.viewNotifications();
+        // System.out.println("Notification Messages: " + messages);
+
+        // // Send notifications
+        // System.out.println("Sending notifications:");
+        // user.sendNotifications();
 }

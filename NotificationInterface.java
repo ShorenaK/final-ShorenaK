@@ -5,5 +5,8 @@ public interface NotificationInterface {
   // Get the notification message               
   String getMessage();     
   // Get the user who will receive the notification           
-  User getTargetUser();               
+  User getTargetUser();    
+  boolean isRead();
+  void markAsRead();
+  String getNotificationId();           
 }

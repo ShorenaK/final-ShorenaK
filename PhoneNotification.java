@@ -1,4 +1,4 @@
-public class PhoneNotification implements NotificationInterface {
+public class PhoneNotification extends AbstractNotification {
     private User targetUser;
     private String phoneNumber;
     private String message;

@@ -1,13 +1,13 @@
-public class EmailNotification implements NotificationInterface {
+public class EmailNotification extends AbstractNotification {
     private User targetUser;
     private String subject;
     private String message;
 
-    public EmailNotification(User targetUser, String subject, String message) {
-        this.targetUser = targetUser;
-        this.subject = subject;
-        this.message = message;
-    }
+    // public EmailNotification(User targetUser, String subject, String message) {
+    //     this.targetUser = targetUser;
+    //     this.subject = subject;
+    //     this.message = message;
+    // }
 
     @Override
     public void send() {
