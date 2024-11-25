@@ -26,7 +26,7 @@ public class CallOut implements UserAction{
     // }
 
     @Override
-    void addReply(Reply reply){
+    public void addReply(Reply reply) {
         replies.add(reply);
     }
 
@@ -62,6 +62,12 @@ public class CallOut implements UserAction{
     public CallOutStatus getStatus() {
         return status;
     }
+    
+    public void resolve(){
+        this.status = CallOutStatus.RESOLVED;
+    }
+
+    @Override
 
 
 }
