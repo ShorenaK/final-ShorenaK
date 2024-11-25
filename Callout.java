@@ -4,42 +4,42 @@ import java.util.UUID;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+public class CallOut implements UserAction {
+    // Unique ID for the CallOut
+    private String id;                     
+    private User sender;                   
+    private User receiver;                 
+    private String content;               
+    private CallOutStatus status;          
+    private List<Reply> replies;          
+    private List<Reaction> reactions;      
+    private String timestamp;              
 
-public class CallOut implements UserAction{
-
-    private String id;
-    private User sender;
-    private User receiver;
-    private String content;
-    private CallOutStatus status;
-    private List<Reply> replies;
-    private List<Reaction> reactions;
-    private String timestamp;
-
-    // const
+    // Constructor
     public CallOut(User sender, User receiver, String content) {
-        //// Generate a unique ID
         this.id = java.util.UUID.randomUUID().toString(); 
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
-        this.status = CallOutStatus.PENDING;
+        this.status = CallOutStatus.PENDING; 
         this.replies = new ArrayList<>();
         this.reactions = new ArrayList<>();
         this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()); 
     }
 
+    // Add a reply to the CallOut
     @Override
     public void addReply(Reply reply) {
         replies.add(reply);
     }
 
+    // Add a reaction to the CallOut
     @Override
-    public void addReaction(Reaction reaction){
+    public void addReaction(Reaction reaction) {
         reactions.add(reaction);
     }
 
-    // Getters 
+    // Getters
     public User getReceiver() {
         return receiver;
     }
@@ -47,6 +47,7 @@ public class CallOut implements UserAction{
     public String getTimestamp() {
         return timestamp;
     }
+
     @Override
     public List<Reply> getReplies() {
         return replies;
@@ -74,13 +75,16 @@ public class CallOut implements UserAction{
     public CallOutStatus getStatus() {
         return status;
     }
-    
-    public void resolve(){
+
+    // Mark the CallOut as resolved
+    public void resolve() {
         this.status = CallOutStatus.RESOLVED;
     }
 
     @Override
     public String toString() {
-        return "CallOut{id='" + id + "', sender=" + sender.getName() + ", content='" + content + "', status=" + status + ", replies=" + replies.size() + ", reactions=" + reactions.size() + "}";
+        return "CallOut{id='" + id + "', sender=" + sender.getName() + ", receiver=" + receiver.getName() + 
+               ", content='" + content + "', status=" + status + ", replies=" + replies.size() + 
+               ", reactions=" + reactions.size() + ", timestamp='" + timestamp + "'}";
     }
 }

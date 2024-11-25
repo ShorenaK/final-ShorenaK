@@ -1,27 +1,17 @@
 public class PhoneNotification extends AbstractNotification {
-    private User targetUser;
-    private String phoneNumber;
-    private String message;
+    private String phoneNumber; // The recipient's phone number
 
+    // Constructor to initialize phone-specific fields
     public PhoneNotification(User targetUser, String phoneNumber, String message) {
-        this.targetUser = targetUser;
+       // Calling the parent constructor
+        super(targetUser, message);  
         this.phoneNumber = phoneNumber;
-        this.message = message;
     }
 
     @Override
     public void send() {
+        // Simulate sending an SMS
         System.out.println("Sending SMS to " + phoneNumber);
         System.out.println("Message: " + message);
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
-
-    @Override
-    public User getTargetUser() {
-        return targetUser;
     }
 }

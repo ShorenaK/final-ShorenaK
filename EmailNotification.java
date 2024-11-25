@@ -1,20 +1,20 @@
 public class EmailNotification extends AbstractNotification {
-    private User targetUser;
-    private String subject;
-    private String message;
+    private String subject; // The subject of the email
 
-    // public EmailNotification(User targetUser, String subject, String message) {
-    //     this.targetUser = targetUser;
-    //     this.subject = subject;
-    //     this.message = message;
-    // }
+    // Constructor to initialize email-specific fields
+    public EmailNotification(User targetUser, String subject, String message) {
+        super(targetUser, message);  // Call the parent constructor
+        this.subject = subject;
+    }
 
     @Override
     public void send() {
+        // Simulate sending an email
         System.out.println("Sending Email to " + targetUser.getEmail());
         System.out.println("Subject: " + subject);
         System.out.println("Message: " + message);
     }
+}
 
     @Override
     public String getMessage() {

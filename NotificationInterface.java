@@ -1,6 +1,7 @@
 // notification intreface
 
 public interface NotificationInterface {
+  String getNotificationId();   
   void send();        
   // Get the notification message               
   String getMessage();     
@@ -8,5 +9,5 @@ public interface NotificationInterface {
   User getTargetUser();    
   boolean isRead();
   void markAsRead();
-  String getNotificationId();           
+          
 }
