@@ -37,7 +37,9 @@ public class Main {
 /// Does not wrok 
         // Mark all notifications as read for the receiver
         System.out.println("\nMarking all notifications as read...");
-        receiver.getNotificationMessages().markAllAsRead();
+        receiver.getNotificationMessages().markAllAsRead();  ///  --> I need to check this getNotificationMessages() method
+
+
 //iT does nto work yet 
         // Check unread notifications after marking as read
         System.out.println("\nUnread notifications for Bob:");
