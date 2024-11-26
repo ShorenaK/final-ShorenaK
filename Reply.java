@@ -13,4 +13,27 @@ public class Reply extends AbstractUserContent {
     public List<Reply> getReplies() {
         return replies;
     }
+
+    // Add a reply to this reply
+    public void addReply(Reply reply) {
+        replies.add(reply);
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Reply from " + sender.getName() + ": " + content);
+    }
+
+    // Display nested replies using recursion
+    public void displayReplies(int depth) {
+        System.out.println("  ".repeat(depth) + "- " + content + " (by " + sender.getName() + ")");
+        for (Reply reply : replies) {
+            reply.displayReplies(depth + 1);
+        }
+    }
+    @Override
+    public String toString() {
+    return "Reply{content='" + content + "', sender='" + sender.getName() + "'}";
+    }
+
 }
