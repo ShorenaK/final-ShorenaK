@@ -17,15 +17,16 @@ public class CallOut implements UserAction {
 
     // Constructor
     public CallOut(User sender, User receiver, String content) {
-        this.id = java.util.UUID.randomUUID().toString(); 
+        this.id = UUID.randomUUID().toString();
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
-        this.status = CallOutStatus.PENDING; 
+        this.status = CallOutStatus.PENDING;
         this.replies = new ArrayList<>();
         this.reactions = new ArrayList<>();
-        this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()); 
+        this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
+    
 
     // Add a reply to the CallOut
     @Override
@@ -81,6 +82,12 @@ public class CallOut implements UserAction {
         this.status = CallOutStatus.RESOLVED;
     }
 
+    public int getTotalReplies() {
+        return replies.stream()
+                .mapToInt(reply -> 1 + reply.getReplies().size())
+                .reduce(0, Integer::sum);
+    }
+    
     @Override
     public String toString() {
         return "CallOut{id='" + id + "', sender=" + sender.getName() + ", receiver=" + receiver.getName() + 
