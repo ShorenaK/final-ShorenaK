@@ -5,22 +5,42 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
-
-        // Create users
+        //  Create Users
         User sender = new User("Shorena", "Shorena@gmail.com");
         User receiver = new User("Sister", "Sister@gmail.com");
 
-        // testing linkedliset 
-        CallOutList globalCallOutList = new CallOutList();
-        CallOut callOut1 = Shorena.sendCallOut("Let’s talk about it", Sister);
-        globalCallOutList.addCallOut(callOut1);
+        System.out.println("Testing user creation...");
+        System.out.println(sender);
+        System.out.println(receiver);
 
-        CallOut callOut2 = Sister.sendCallOut("Sure, I am free tomorrow.", Shorena);
-        globalCallOutList.addCallOut(callOut2);
+        // Send a CallOut
+        System.out.println("\nSending a CallOut...");
+        CallOutList globalCallOuts = new CallOutList(); 
+        CallOut callOut = sender.sendCallout("We need to discuss before we lose each other.", receiver);
+        globalCallOuts.addCallOut(callOut);
 
-        System.out.println("All CallOuts:");
-        globalCallOutList.displayCallOuts();
+        // Display the CallOut
+        System.out.println("\nDisplaying the CallOut:");
+        globalCallOuts.displayCallOuts();
+
+
+
+
+
+
+
+
+
+        // // testing linkedliset 
+        // CallOutList globalCallOutList = new CallOutList();
+        // CallOut callOut1 = Shorena.sendCallOut("Let’s talk about it", Sister);
+        // globalCallOutList.addCallOut(callOut1);
+
+        // CallOut callOut2 = Sister.sendCallOut("Sure, I am free tomorrow.", Shorena);
+        // globalCallOutList.addCallOut(callOut2);
+
+        // System.out.println("All CallOuts:");
+        // globalCallOutList.displayCallOuts();
 
 
 
