@@ -23,4 +23,12 @@ public class CallOutNode {
     public void setNext(CallOutNode next) {
         this.next = next;
     }
+    
+    @Override
+    public String toString() {
+    return "CallOutNode{" +
+           "callOut=" + callOut +
+           '}';
+}
+
 }
