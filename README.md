@@ -19,18 +19,18 @@
 
 - The design follows key SOLID principles:
 
-1. Single Responsibility Principle: Classes focus on one purpose: Each class has a single responsibility:
+    1. Single Responsibility Principle: Classes focus on one purpose: Each class has a single responsibility:
         - User: Manages user-specific data and actions.
         - CallOut: Represents a message with replies and reactions.
         - NotificationManager: Manages notifications.
-2. Open/Closed Principle, Classes are open for extension but closed for modification:
+    2. Open/Closed Principle, Classes are open for extension but closed for modification:
         - NotificationInterface allows adding new notification types like a PushNotification without altering existing code.
         - UserAction interface supports additional user actions without modifying CallOut.
-3. - Liskov Substitution Principle (LSP), Subtypes replace their base types:
+    3. Liskov Substitution Principle (LSP), Subtypes replace their base types:
         - Reply and Reaction inherit from AbstractUserContent and work seamlessly wherever AbstractUserContent is expected.
-4. - Interface Segregation Principle (ISP): Interfaces ensure classes implement only relevant methods.
+    4. Interface Segregation Principle (ISP): Interfaces ensure classes implement only relevant methods.
         - NotificationInterface and UserAction define clear, independent contracts.
-5. - Dependency Inversion Principle (DIP), High level modules depend on abstractions:
+    5. Dependency Inversion Principle (DIP), High level modules depend on abstractions:
         - NotificationManager depends on NotificationInterface, not specific implementations like EmailNotification.
 
 - Functional Programming: Lambda expressions and higher-order functions (map, filter, reduce) are used in NotificationManager for efficient processing of notifications.
@@ -73,7 +73,7 @@
     - Use Case: Users can create groups, such as "Family Members," to collaboratively resolve issues or discuss matters privately.
 
 2. Functionality: Users can toggle a CallOut to "public" mode. Other users can view, react, and reply to public CallOuts. Implement a system to filter or moderate public discussions for quality and relevance.
-  - Use Case: When users feel the need for outside perspectives, they can make their CallOut public and receive feedback or advice from the broader community.
+    - Use Case: When users feel the need for outside perspectives, they can make their CallOut public and receive feedback or advice from the broader community.
 
 3. Enhanced Notifications: Expand the notification system to include:
     - Push notifications.
