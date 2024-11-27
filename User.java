@@ -57,10 +57,10 @@ public class User {
 
     // Reply to a specific CallOut
     public void replyToCallout(String calloutId, String message) {
-        CallOut callOut = callOuts.findById(calloutId); // Assuming CallOutList has findById()
+        CallOut callOut = callOuts.findCalloutById(calloutId); 
         if (callOut != null) {
-            Reply reply = new Reply(this, message); // Create a new Reply
-            callOut.addReply(reply); // Add Reply to CallOut
+            Reply reply = new Reply(this, message); 
+            callOut.addReply(reply); 
         } else {
             System.out.println("CallOut with ID " + calloutId + " not found.");
         }
@@ -68,10 +68,10 @@ public class User {
 
     // React to a specific CallOut
     public void reactToCallout(String calloutId, ReactionType type, CallOutList globalCallOuts) {
-        CallOut callOut = globalCallOuts.findById(calloutId); // Find CallOut in global list
+        CallOut callOut = globalCallOuts.findCalloutById(calloutId); 
         if (callOut != null) {
-            Reaction reaction = new Reaction(this, type); // Create a new Reaction
-            callOut.addReaction(reaction); // Add Reaction to CallOut
+            Reaction reaction = new Reaction(this, type);
+            callOut.addReaction(reaction);
         } else {
             System.out.println("CallOut with ID " + calloutId + " not found.");
         }
