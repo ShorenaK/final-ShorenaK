@@ -25,4 +25,15 @@ public class CallOutList {
             current = current.getNext();
         }
     }
+    public CallOut findById(String id) {
+        CallOutNode current = head;
+        while (current != null) {
+            if (current.getCallOut().getId().equals(id)) {
+                return current.getCallOut();
+            }
+            current = current.getNext();
+        }
+        return null; // Return null if no CallOut matches the ID
+    }
+    
 }

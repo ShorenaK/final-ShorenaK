@@ -10,7 +10,7 @@ public class CallOut implements UserAction {
     private User sender;                   
     private User receiver;                 
     private String content;               
-    private CallOutStatus status;          
+    private CallOutStatusType status;          
     private List<Reply> replies;          
     private List<Reaction> reactions;      
     private String timestamp;              
@@ -21,7 +21,7 @@ public class CallOut implements UserAction {
         this.sender = sender;
         this.receiver = receiver;
         this.content = content;
-        this.status = CallOutStatus.PENDING;
+        this.status = CallOutStatusType.PENDING;
         this.replies = new ArrayList<>();
         this.reactions = new ArrayList<>();
         this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
@@ -73,13 +73,13 @@ public class CallOut implements UserAction {
         return id;
     }
 
-    public CallOutStatus getStatus() {
+    public CallOutStatusType getStatus() {
         return status;
     }
 
     // Mark the CallOut as resolved
     public void resolve() {
-        this.status = CallOutStatus.RESOLVED;
+        this.status = CallOutStatusType.RESOLVED;
     }
 
     public int getTotalReplies() {

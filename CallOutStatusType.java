@@ -1,4 +1,4 @@
-public enum CallOutStatus {
+public enum CallOutStatusType {
     PENDING,
     RESOLVED,
     ARCHIVED

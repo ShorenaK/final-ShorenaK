@@ -3,22 +3,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 // user
-
 public class User {
+    // Existing attributes
     private String name;
     private String email;
-    private List<NotificationInterface> notifications; // Manages notifications
-     // private List<CallOut> callOuts = new ArrayList<>();
-    private CallOutList callOuts;                      // Custom linked list for CallOuts
+    private List<NotificationInterface> notifications; 
+    private CallOutList callOuts;                     
 
+    // Constructor
     public User(String name, String email) {
         this.name = name;
         this.email = email;
         this.notifications = new ArrayList<>();
-         // this.callOuts = new ArrayList<>();
         this.callOuts = new CallOutList();
     }
 
+    // Getter methods
     public String getName() {
         return name;
     }
@@ -27,11 +27,10 @@ public class User {
         return email;
     }
 
+    // Add a notification
     public void addNotification(NotificationInterface notification) {
         notifications.add(notification);
     }
-   // Calls the send() method of each NotificationInterface object
-    // triggers the notifications to be sent via  email or SMS etc... .
 
     // Send all notifications
     public void sendNotifications() {
@@ -41,14 +40,12 @@ public class User {
     }
 
     // Create and send a CallOut
-    public CallOut sendCallout(String message, User receiver){
+    public CallOut sendCallout(String message, User receiver) {
         CallOut newCallOut = new CallOut(this, receiver, message);
-        callOuts.addCallOut(newCallOut); // Use addCallOut
+        callOuts.addCallOut(newCallOut); // Add CallOut to the custom linked list
         return newCallOut;
     }
-    
-// Collect each notification's message 
-// Return the list of messages
+
     // View all notification messages
     public List<String> viewNotifications() {
         List<String> messages = new ArrayList<>();
@@ -56,6 +53,28 @@ public class User {
             messages.add(notification.getMessage());
         }
         return messages;
+    }
+
+    // Reply to a specific CallOut
+    public void replyToCallout(String calloutId, String message) {
+        CallOut callOut = callOuts.findById(calloutId); // Assuming CallOutList has findById()
+        if (callOut != null) {
+            Reply reply = new Reply(this, message); // Create a new Reply
+            callOut.addReply(reply); // Add Reply to CallOut
+        } else {
+            System.out.println("CallOut with ID " + calloutId + " not found.");
+        }
+    }
+
+    // React to a specific CallOut
+    public void reactToCallout(String calloutId, ReactionType type, CallOutList globalCallOuts) {
+        CallOut callOut = globalCallOuts.findById(calloutId); // Find CallOut in global list
+        if (callOut != null) {
+            Reaction reaction = new Reaction(this, type); // Create a new Reaction
+            callOut.addReaction(reaction); // Add Reaction to CallOut
+        } else {
+            System.out.println("CallOut with ID " + calloutId + " not found.");
+        }
     }
 
     @Override
