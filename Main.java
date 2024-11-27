@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class Main {
     public static void main(String[] args) {
         //  Create Users
@@ -22,9 +21,27 @@ public class Main {
         // Display the CallOut
         System.out.println("\nDisplaying the CallOut:");
         globalCallOuts.displayCallOuts();
+        
+        // Add Replies to the CallOut
+        System.out.println("\nAdding replies to the CallOut...");
+        String calloutId = callOut.getId();
 
+        receiver.replyToCallout(calloutId, "I agree. When can we talk?");
+        sender.replyToCallout(calloutId, "How about tomorrow evening?");
+        receiver.replyToCallout(calloutId, "Tomorrow evening works for me.");
 
-
+        // Display the CallOut with Replies
+        System.out.println("\nDisplaying the CallOut with Replies:");
+        CallOut foundCallOut = globalCallOuts.findCalloutById(calloutId);
+        if (foundCallOut != null) {
+            System.out.println(foundCallOut);
+            System.out.println("Replies:");
+            for (Reply reply : foundCallOut.getReplies()) {
+                reply.displayReplies(0);
+            }
+        } else {
+            System.out.println("CallOut not found.");
+        }
 
 
 
@@ -42,49 +59,5 @@ public class Main {
         // System.out.println("All CallOuts:");
         // globalCallOutList.displayCallOuts();
 
-
-
-
-
-//         // Create a CallOut  /// NEEDS TO BE FIXED
-//         System.out.println("Creating a CallOut...");
-//         CallOut callOut = new CallOut(sender, receiver, "We need to discuss before we loose eachother.");
-
-//         // Generate a notification for the receiver
-//         NotificationInterface callOutNotification = new EmailNotification(
-//                 receiver,
-//                 "New CallOut Received",
-//                 "Shorena sent you a CallOut: We need to discuss before we loose eachother."
-//         );
-
-//         // Add the notification to the receiver's notifications
-//         receiver.addNotification(callOutNotification);
-
-//         // View receiver's notifications
-//         System.out.println("\nSister's notifications:");
-//         List<String> notifications = receiver.viewNotifications();
-//         for (String notificationMessage : notifications) {
-//             System.out.println(notificationMessage);
-//         }
-
-//         // Send all notifications for the receiver
-//         System.out.println("\nSending notifications to Sister:");
-//         receiver.sendNotifications();
-
-// /// Does not wrok 
-//         // Mark all notifications as read for the receiver
-//         System.out.println("\nMarking all notifications as read...");
-//         receiver.getNotificationMessages().markAllAsRead();  ///  --> I need to check this getNotificationMessages() method
-
-
-// //iT does nto work yet 
-//         // Check unread notifications after marking as read
-//         System.out.println("\nUnread notifications for Bob:");
-//         List<NotificationInterface> unreadNotifications = receiver.getNotificationMessages().getUnreadNotifications();
-//         if (unreadNotifications.isEmpty()) {
-//             System.out.println("No unread notifications.");
-//         } else {
-//             System.out.println("Unread notifications exist.");
-//         }
    }
 }
