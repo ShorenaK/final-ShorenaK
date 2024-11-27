@@ -14,7 +14,6 @@ public class EmailNotification extends AbstractNotification {
         System.out.println("Subject: " + subject);
         System.out.println("Message: " + message);
     }
-}
 
     @Override
     public String getMessage() {

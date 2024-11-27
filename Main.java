@@ -42,22 +42,22 @@ public class Main {
         } else {
             System.out.println("CallOut not found.");
         }
+    
+        //  Add Reactions to the CallOut
+        System.out.println("\nAdding reactions to the CallOut...");
+        receiver.reactToCallout(calloutId, ReactionType.LIKE, globalCallOuts);
+        sender.reactToCallout(calloutId, ReactionType.LOVE, globalCallOuts);
 
+        // Display the CallOut with Reactions
+        System.out.println("\nDisplaying the CallOut with Reactions:");
+        if (foundCallOut != null) {
+            System.out.println(foundCallOut);
+            System.out.println("Reactions:");
+            for (Reaction reaction : foundCallOut.getReactions()) {
+                reaction.display();
+            }
+        }
 
-
-
-
-
-        // // testing linkedliset 
-        // CallOutList globalCallOutList = new CallOutList();
-        // CallOut callOut1 = Shorena.sendCallOut("Let’s talk about it", Sister);
-        // globalCallOutList.addCallOut(callOut1);
-
-        // CallOut callOut2 = Sister.sendCallOut("Sure, I am free tomorrow.", Shorena);
-        // globalCallOutList.addCallOut(callOut2);
-
-        // System.out.println("All CallOuts:");
-        // globalCallOutList.displayCallOuts();
 
    }
 }
