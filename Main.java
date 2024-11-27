@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -57,6 +57,40 @@ public class Main {
                 reaction.display();
             }
         }
+
+        // Testong NotificationseMethods  
+        System.out.println("\nTesting notifications...");
+        NotificationManager notificationManager = new NotificationManager();
+
+        // Create Notifications
+        EmailNotification emailNotification = new EmailNotification(receiver, "Important", "Please reply to the CallOut.");
+        PhoneNotification phoneNotification = new PhoneNotification(receiver, "111-111-1111", "We need to talk soon.");
+
+        // Add Notifications to the Manager and User
+        notificationManager.addNotification(emailNotification);
+        notificationManager.addNotification(phoneNotification);
+        receiver.addNotification(emailNotification);
+        receiver.addNotification(phoneNotification);
+
+        // Send Notifications
+        System.out.println("\nSending all notifications:");
+        notificationManager.sendAllNotifications();
+
+        // View Unread Notifications
+        System.out.println("\nUnread notifications for receiver:");
+        List<NotificationInterface> unreadNotifications = notificationManager.getUnreadNotifications();
+        unreadNotifications.forEach(notification -> System.out.println(notification.getMessage()));
+
+        // Mark Notifications as Read
+        System.out.println("\nMarking all notifications as read...");
+        notificationManager.markAllAsRead();
+
+        // Display Notification Summary
+        System.out.println("\nNotification summary for receiver:");
+        System.out.println("Total unread: " + notificationManager.countUnreadNotifications());
+        System.out.println("All notifications:");
+        notificationManager.getNotificationMessages().forEach(System.out::println);
+
 
 
    }
