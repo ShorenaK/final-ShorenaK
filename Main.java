@@ -8,12 +8,12 @@ public class Main {
         User sender = new User("Shorena", "Shorena@gmail.com");
         User receiver = new User("Sister", "Sister@gmail.com");
 
-        System.out.println("Testing user creation...");
+        System.out.println("*** ---- **** Testing user creation. *** ---- **** ");
         System.out.println(sender);
         System.out.println(receiver);
 
         // Send a CallOut
-        System.out.println("\nSending a CallOut...");
+        System.out.println("\n*** ---- **** Sending a CallOut. *** ---- ****");
         CallOutList globalCallOuts = new CallOutList(); 
         CallOut callOut = sender.sendCallout("We need to discuss before we lose each other.", receiver);
         globalCallOuts.addCallOut(callOut);
@@ -23,7 +23,7 @@ public class Main {
         globalCallOuts.displayCallOuts();
         
         // Add Replies to the CallOut
-        System.out.println("\nAdding replies to the CallOut...");
+        System.out.println("\n*** ---- **** Adding replies to the CallOut. *** ---- ****");
         String calloutId = callOut.getId();
 
         receiver.replyToCallout(calloutId, "I agree. When can we talk?");
@@ -44,7 +44,7 @@ public class Main {
         }
     
         //  Add Reactions to the CallOut
-        System.out.println("\nAdding reactions to the CallOut...");
+        System.out.println("\n*** ---- **** Adding reactions to the CallOut. *** ---- ****");
         receiver.reactToCallout(calloutId, ReactionType.LIKE, globalCallOuts);
         sender.reactToCallout(calloutId, ReactionType.LOVE, globalCallOuts);
 
@@ -59,7 +59,7 @@ public class Main {
         }
 
         // Testong NotificationseMethods  
-        System.out.println("\nTesting notifications...");
+        System.out.println("\n*** ---- **** Testing notifications. *** ---- ****");
         NotificationManager notificationManager = new NotificationManager();
 
         // Create Notifications
@@ -82,7 +82,7 @@ public class Main {
         unreadNotifications.forEach(notification -> System.out.println(notification.getMessage()));
 
         // Mark Notifications as Read
-        System.out.println("\nMarking all notifications as read...");
+        System.out.println("\n*** ---- **** Marking all notifications as read. *** ---- ****");
         notificationManager.markAllAsRead();
 
         // Display Notification Summary
@@ -90,8 +90,6 @@ public class Main {
         System.out.println("Total unread: " + notificationManager.countUnreadNotifications());
         System.out.println("All notifications:");
         notificationManager.getNotificationMessages().forEach(System.out::println);
-
-
 
    }
 }
