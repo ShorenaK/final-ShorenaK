@@ -73,4 +73,19 @@ public class CallOutList {
         }
         return count;
     }
+    @Override
+    public String toString() {
+    StringBuilder result = new StringBuilder("CallOutList: [");
+    CallOutNode current = head;
+    while (current != null) {
+        result.append(current.getCallOut().toString()).append(", ");
+        current = current.getNext();
+    }
+    if (result.length() > 12) { 
+        result.setLength(result.length() - 2);
+    }
+    result.append("]");
+    return result.toString();
+}
+
 }
