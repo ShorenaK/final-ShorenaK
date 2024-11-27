@@ -19,11 +19,11 @@
 
 - The design follows key SOLID principles:
 
-1. - Single Responsibility Principle: Classes focus on one purpose: Each class has a single responsibility:
+1. Single Responsibility Principle: Classes focus on one purpose: Each class has a single responsibility:
         - User: Manages user-specific data and actions.
         - CallOut: Represents a message with replies and reactions.
         - NotificationManager: Manages notifications.
-2. - Open/Closed Principle, Classes are open for extension but closed for modification:
+2. Open/Closed Principle, Classes are open for extension but closed for modification:
         - NotificationInterface allows adding new notification types like a PushNotification without altering existing code.
         - UserAction interface supports additional user actions without modifying CallOut.
 3. - Liskov Substitution Principle (LSP), Subtypes replace their base types:
@@ -69,23 +69,25 @@
 
 ## Future Improvements:
 
-- To implement Group CallOuts: Add functionality to allow users to create group chats by tagging the appropriate people.
+1. To implement Group CallOuts: Add functionality to allow users to create group chats by tagging the appropriate people.
     - Use Case: Users can create groups, such as "Family Members," to collaboratively resolve issues or discuss matters privately.
-- Functionality: Allow users to invite specific people to a CallOut Group. Enable threaded discussions and reactions within the group context.
 
-- Public CallOuts for Community Input: Introduce an option for users to make a CallOut public.
-    - Use Case: When users feel the need for outside perspectives, they can make their CallOut public and receive feedback or advice from the broader community.
+2. Functionality: Users can toggle a CallOut to "public" mode. Other users can view, react, and reply to public CallOuts. Implement a system to filter or moderate public discussions for quality and relevance.
+  - Use Case: When users feel the need for outside perspectives, they can make their CallOut public and receive feedback or advice from the broader community.
 
-- Functionality: Users can toggle a CallOut to "public" mode. Other users can view, react, and reply to public CallOuts. Implement a system to filter or moderate public discussions for quality and relevance.
-
-- Enhanced Notifications: Expand the notification system to include:
+3. Enhanced Notifications: Expand the notification system to include:
     - Push notifications.
     - Scheduled reminders for unresolved CallOuts.
 
-- Improved UI/UX: Transition from a console-based application to a graphical interface for a better user experience:
+4. Improved UI/UX: Transition from a console-based application to a graphical interface for a better user experience:
     - Visualize CallOuts, replies, and reactions hierarchically.
     - Allow drag-and-drop user tagging for group creation.
-- Analytics and Insights:
+
+5. Voice Mail Functionality: Enable users to leave voicemails as part of their CallOuts.            
+    - Recipients can listen to these messages at their convenience, promoting thoughtful communication when direct conversations aren't possible.
+    - Use Case: Allow users to convey tone and emotions more effectively compared to text, especially when dealing with sensitive topics.
+
+6. Analytics and Insights:
 Provide users with insights about their communication patterns:
     - Number of resolved CallOuts.
     - Common reaction types.
