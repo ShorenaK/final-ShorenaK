@@ -1,6 +1,4 @@
-# Final Project --- Object Oriented Design Principles.
-## 12.16.2024
-## Shoren K. Anzhilov
+# Object Oriented Design Principles - CS5004 class of 2024. Final Project!
 
 ## Description:
 
