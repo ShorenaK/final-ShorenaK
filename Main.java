@@ -84,6 +84,19 @@ public class Main {
             }
         }
 
+        // Adding More Reactions
+        System.out.println("\n*** ---- **** Adding more reactions. *** ---- ****");
+        receiver.reactToCallout(calloutId, ReactionType.LAUGH, globalCallOuts);
+        sender.reactToCallout(calloutId, ReactionType.SAD, globalCallOuts);
+
+        // Displaying Updated Reactions
+        System.out.println("\nDisplaying Updated Reactions:");
+        if (foundCallOut != null) {
+            for (Reaction reaction : foundCallOut.getReactions()) {
+                reaction.display();
+            }
+        }
+
         // Testong NotificationseMethods  
         System.out.println("\n*** ---- **** Testing notifications. *** ---- ****");
         NotificationManager notificationManager = new NotificationManager();
