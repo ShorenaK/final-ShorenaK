@@ -49,6 +49,25 @@ public class Main {
         } else {
             System.out.println("CallOut not found.");
         }
+
+        // Adding More Replies to Test Nested Replies
+        System.out.println("\n*** ---- **** Adding more nested replies. *** ---- ****");
+        if (foundCallOut != null) {
+            Reply initialReply = new Reply(sender, "What about next week?");
+            foundCallOut.addReply(initialReply);
+
+            Reply nestedReply1 = new Reply(receiver, "Next week works. How about Monday?");
+            initialReply.addReply(nestedReply1);
+
+            Reply nestedReply2 = new Reply(sender, "Monday sounds good.");
+            nestedReply1.addReply(nestedReply2);
+
+            // Display All Replies with Nesting
+            System.out.println("\nDisplaying All Replies:");
+            for (Reply reply : foundCallOut.getReplies()) {
+                reply.displayReplies(0);
+            }
+        }
     
         //  Add Reactions to the CallOut
         System.out.println("\n*** ---- **** Adding reactions to the CallOut. *** ---- ****");
