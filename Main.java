@@ -98,5 +98,11 @@ public class Main {
         System.out.println("All notifications:");
         notificationManager.getNotificationMessages().forEach(System.out::println);
 
+        // Adding more Notifications
+        System.out.println("\n*** ---- **** Adding multiple notifications. *** ---- ****");
+        notificationManager.addNotification(new EmailNotification(receiver, "Follow Up", "Are we meeting tomorrow?"));
+        notificationManager.addNotification(new PhoneNotification(receiver, "111-111-1111", "Reminder: You have a pending CallOut."));
+        notificationManager.addNotification(new EmailNotification(receiver, "Urgent", "We need to finish our discussion."));
+
    }
 }
