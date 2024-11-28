@@ -123,5 +123,26 @@ public class Main {
         notificationManager.addNotification(new PhoneNotification(receiver, "111-111-1111", "Reminder: You have a pending CallOut."));
         notificationManager.addNotification(new EmailNotification(receiver, "Urgent", "We need to finish our discussion."));
 
+
+        // Viewing All Notifications
+        System.out.println("\nAll Notifications:");
+        notificationManager.getNotificationMessages().forEach(System.out::println);
+
+        // Filter Unread Notifications
+        System.out.println("\nUnread Notifications:");
+        List<NotificationInterface> filteredUnread = notificationManager.getUnreadNotifications();
+        filteredUnread.forEach(notification -> System.out.println(notification.getMessage()));
+
+
+        // Count Unread Notifications (Reduce Example)
+        System.out.println("\nCount of Unread Notifications:");
+        System.out.println(notificationManager.countUnreadNotifications());
+
+        // Mark All as Read and Display Updated Count
+        notificationManager.markAllAsRead();
+        System.out.println("\nUnread Notifications After Marking All as Read:");
+        System.out.println(notificationManager.countUnreadNotifications());
+
+
    }
 }
