@@ -1,7 +1,7 @@
 
 /******
 Name: Shorena K. Anzhilov
-Assignment:  Final Lab -- CallOut App  
+Assignment:  Final Lab -- CallingOut App  
 Date: 11.27.2024
 Notes: Main.java
 ******/
