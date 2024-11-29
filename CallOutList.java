@@ -1,10 +1,25 @@
+/******
+Name: Shorena K. Anzhilov
+Assignment:  Final Lab -- CallingOut App  
+Date: 11.27.2024
+Notes: CallOutList.java
+******/
 
 
-
+/**
+ * A linked list implementation for managing a collection of CallOut objects.
+ * Provides methods to add, remove, find, display, and count CallOuts in the list.
+ */
 public class CallOutList {
+    // The head node of the CallOut linked list
     private CallOutNode head;
 
-    // Add a CallOut to the list
+    /**
+     * Adds a CallOut to the list. If the list is empty, the CallOut becomes the head.
+     * Otherwise, it is added to the end of the list.
+     *
+     * @param callOut the CallOut to add
+     */
     public void addCallOut(CallOut callOut) {
         if (head == null) {
             head = new CallOutNode(callOut);
@@ -17,7 +32,10 @@ public class CallOutList {
         }
     }
 
-    // Display all CallOuts
+    /**
+     * Displays all CallOuts in the list.
+     * Each CallOut is printed using its {@code toString()} representation.
+     */
     public void displayCallOuts() {
         CallOutNode current = head;
         while (current != null) {
@@ -26,7 +44,12 @@ public class CallOutList {
         }
     }
 
-    // Find a CallOut by its ID
+    /**
+     * Finds a CallOut by its unique ID.
+     *
+     * @param id the ID of the CallOut to find
+     * @return the CallOut with the matching ID, or {@code null} if not found
+     */
     public CallOut findCalloutById(String id) {
         CallOutNode current = head;
         while (current != null) {
@@ -38,7 +61,12 @@ public class CallOutList {
         return null;
     }
 
-    // Remove a CallOut by its ID
+    /**
+     * Removes a CallOut by its unique ID.
+     *
+     * @param id the ID of the CallOut to remove
+     * @return {@code true} if the CallOut was successfully removed, {@code false} otherwise
+     */
     public boolean removeCallOutById(String id) {
         if (head == null) {
             return false; // List is empty
@@ -63,7 +91,11 @@ public class CallOutList {
         return false; // ID not found
     }
 
-    // Get the size of the list
+    /**
+     * Returns the size of the CallOut list.
+     *
+     * @return the number of CallOuts in the list
+     */
     public int size() {
         int count = 0;
         CallOutNode current = head;
@@ -73,19 +105,24 @@ public class CallOutList {
         }
         return count;
     }
+
+    /**
+     * Returns a string representation of the CallOutList, including all CallOuts in the list.
+     *
+     * @return a string representation of the CallOutList
+     */
     @Override
     public String toString() {
-    StringBuilder result = new StringBuilder("CallOutList: [");
-    CallOutNode current = head;
-    while (current != null) {
-        result.append(current.getCallOut().toString()).append(", ");
-        current = current.getNext();
+        StringBuilder result = new StringBuilder("CallOutList: [");
+        CallOutNode current = head;
+        while (current != null) {
+            result.append(current.getCallOut().toString()).append(", ");
+            current = current.getNext();
+        }
+        if (result.length() > 12) {
+            result.setLength(result.length() - 2);
+        }
+        result.append("]");
+        return result.toString();
     }
-    if (result.length() > 12) { 
-        result.setLength(result.length() - 2);
-    }
-    result.append("]");
-    return result.toString();
-}
-
 }
