@@ -1,16 +1,37 @@
+/******
+Name: Shorena K. Anzhilov
+Assignment:  Final Lab -- CallingOut App  
+Date: 11.27.2024
+Notes: User.java
+******/
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-// user
+/**
+ * Represents a user in the system, capable of managing notifications, sending and replying to call-outs,
+ * and reacting to call-outs.
+ */
 public class User {
-    // Existing attributes
+    // User's name
     private String name;
-    private String email;
-    private List<NotificationInterface> notifications; 
-    private CallOutList callOuts;                     
 
-    // Constructor
+    // User's email address
+    private String email;
+
+    // List of notifications associated with the user
+    private List<NotificationInterface> notifications;
+
+    // Custom linked list of CallOuts for the user
+    private CallOutList callOuts;
+
+    /**
+     * Constructs a new User with a name and email.
+     *
+     * @param name the name of the user
+     * @param email the email address of the user
+     */
     public User(String name, String email) {
         this.name = name;
         this.email = email;
@@ -18,35 +39,60 @@ public class User {
         this.callOuts = new CallOutList();
     }
 
-    // Getter methods
+    /**
+     * Returns the name of the user.
+     *
+     * @return the user's name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the email address of the user.
+     *
+     * @return the user's email address
+     */
     public String getEmail() {
         return email;
     }
 
-    // Add a notification
+    /**
+     * Adds a notification to the user's notification list.
+     *
+     * @param notification the notification to add
+     */
     public void addNotification(NotificationInterface notification) {
         notifications.add(notification);
     }
 
-    // Send all notifications
+    /**
+     * Sends all notifications in the user's notification list.
+     */
     public void sendNotifications() {
         for (NotificationInterface notification : notifications) {
             notification.send();
         }
     }
 
-    // Create and send a CallOut
+    /**
+     * Creates and sends a new CallOut to a receiver.
+     *
+     * @param message  the message content of the CallOut
+     * @param receiver the receiver of the CallOut
+     * @return the created CallOut
+     */
     public CallOut sendCallout(String message, User receiver) {
         CallOut newCallOut = new CallOut(this, receiver, message);
-        callOuts.addCallOut(newCallOut); // Add CallOut to the custom linked list
+        callOuts.addCallOut(newCallOut);
         return newCallOut;
     }
 
-    // View all notification messages
+    /**
+     * Retrieves a list of notification messages.
+     *
+     * @return a list of notification messages
+     */
     public List<String> viewNotifications() {
         List<String> messages = new ArrayList<>();
         for (NotificationInterface notification : notifications) {
@@ -55,20 +101,31 @@ public class User {
         return messages;
     }
 
-    // Reply to a specific CallOut
+    /**
+     * Replies to a specific CallOut identified by its ID.
+     *
+     * @param calloutId the ID of the CallOut to reply to
+     * @param message  the reply message
+     */
     public void replyToCallout(String calloutId, String message) {
-        CallOut callOut = callOuts.findCalloutById(calloutId); 
+        CallOut callOut = callOuts.findCalloutById(calloutId);
         if (callOut != null) {
-            Reply reply = new Reply(this, message); 
-            callOut.addReply(reply); 
+            Reply reply = new Reply(this, message);
+            callOut.addReply(reply);
         } else {
             System.out.println("CallOut with ID " + calloutId + " not found.");
         }
     }
 
-    // React to a specific CallOut
+    /**
+     * Reacts to a specific CallOut identified by its ID.
+     *
+     * @param calloutId the ID of the CallOut to react to
+     * @param type the type of reaction
+     * @param globalCallOuts the global list of CallOuts
+     */
     public void reactToCallout(String calloutId, ReactionType type, CallOutList globalCallOuts) {
-        CallOut callOut = globalCallOuts.findCalloutById(calloutId); 
+        CallOut callOut = globalCallOuts.findCalloutById(calloutId);
         if (callOut != null) {
             Reaction reaction = new Reaction(this, type);
             callOut.addReaction(reaction);
@@ -77,10 +134,15 @@ public class User {
         }
     }
 
+    /**
+     * Returns a string representation of the user.
+     *
+     * @return a string representation of the user
+     */
     @Override
     public String toString() {
-        return "User{name='" + name + "', email='" + email + 
-               "', callOuts=" + callOuts.size() + 
+        return "User{name='" + name + "', email='" + email +
+               "', callOuts=" + callOuts.size() +
                ", notifications=" + notifications.size() + "}";
     }
 }
