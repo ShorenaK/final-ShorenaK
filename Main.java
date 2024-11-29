@@ -1,4 +1,3 @@
-
 /******
 Name: Shorena K. Anzhilov
 Assignment:  Final Lab -- CallingOut App  
@@ -8,10 +7,20 @@ Notes: Main.java
 
 import java.util.List;
 
-
+/**
+ * The entry point of the application.
+ * Demonstrates the functionality of the system, including users, CallOuts, replies, reactions, and notifications.
+ */
 public class Main {
+
+    /**
+     * The main method, which drives the program execution.
+     * Demonstrates the creation of users, CallOuts, nested replies, reactions, and the notification system.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
-        //  Create Users
+        // Create Users
         User sender = new User("Shorena", "Shorena@gmail.com");
         User receiver = new User("Sister", "Sister@gmail.com");
 
@@ -21,14 +30,14 @@ public class Main {
 
         // Send a CallOut
         System.out.println("\n*** ---- **** Sending a CallOut. *** ---- ****");
-        CallOutList globalCallOuts = new CallOutList(); 
+        CallOutList globalCallOuts = new CallOutList();
         CallOut callOut = sender.sendCallout("We need to discuss before we lose each other.", receiver);
         globalCallOuts.addCallOut(callOut);
 
         // Display the CallOut
         System.out.println("\nDisplaying the CallOut:");
         globalCallOuts.displayCallOuts();
-        
+
         // Add Replies to the CallOut
         System.out.println("\n*** ---- **** Adding replies to the CallOut. *** ---- ****");
         String calloutId = callOut.getId();
@@ -68,8 +77,8 @@ public class Main {
                 reply.displayReplies(0);
             }
         }
-    
-        //  Add Reactions to the CallOut
+
+        // Add Reactions to the CallOut
         System.out.println("\n*** ---- **** Adding reactions to the CallOut. *** ---- ****");
         receiver.reactToCallout(calloutId, ReactionType.LIKE, globalCallOuts);
         sender.reactToCallout(calloutId, ReactionType.LOVE, globalCallOuts);
@@ -84,20 +93,7 @@ public class Main {
             }
         }
 
-        // Adding More Reactions
-        System.out.println("\n*** ---- **** Adding more reactions. *** ---- ****");
-        receiver.reactToCallout(calloutId, ReactionType.LAUGH, globalCallOuts);
-        sender.reactToCallout(calloutId, ReactionType.SAD, globalCallOuts);
-
-        // Displaying Updated Reactions
-        System.out.println("\nDisplaying Updated Reactions:");
-        if (foundCallOut != null) {
-            for (Reaction reaction : foundCallOut.getReactions()) {
-                reaction.display();
-            }
-        }
-
-        // Testong NotificationseMethods  
+        // Test Notification System
         System.out.println("\n*** ---- **** Testing notifications. *** ---- ****");
         NotificationManager notificationManager = new NotificationManager();
 
@@ -105,7 +101,7 @@ public class Main {
         EmailNotification emailNotification = new EmailNotification(receiver, "Important", "Please reply to the CallOut.");
         PhoneNotification phoneNotification = new PhoneNotification(receiver, "111-111-1111", "We need to talk soon.");
 
-        // Add Notifications to the Manager and User
+        // Add Notifications to Manager and User
         notificationManager.addNotification(emailNotification);
         notificationManager.addNotification(phoneNotification);
         receiver.addNotification(emailNotification);
@@ -130,24 +126,17 @@ public class Main {
         System.out.println("All notifications:");
         notificationManager.getNotificationMessages().forEach(System.out::println);
 
-        // Adding more Notifications
+        // Add and Display Notifications
         System.out.println("\n*** ---- **** Adding multiple notifications. *** ---- ****");
         notificationManager.addNotification(new EmailNotification(receiver, "Follow Up", "Are we meeting tomorrow?"));
         notificationManager.addNotification(new PhoneNotification(receiver, "111-111-1111", "Reminder: You have a pending CallOut."));
         notificationManager.addNotification(new EmailNotification(receiver, "Urgent", "We need to finish our discussion."));
 
-
-        // Viewing All Notifications
-        System.out.println("\nAll Notifications:");
-        notificationManager.getNotificationMessages().forEach(System.out::println);
-
-        // Filter Unread Notifications
+        // View and Count Notifications
         System.out.println("\nUnread Notifications:");
         List<NotificationInterface> filteredUnread = notificationManager.getUnreadNotifications();
         filteredUnread.forEach(notification -> System.out.println(notification.getMessage()));
 
-
-        // Count Unread Notifications (Reduce Example)
         System.out.println("\nCount of Unread Notifications:");
         System.out.println(notificationManager.countUnreadNotifications());
 
@@ -155,7 +144,5 @@ public class Main {
         notificationManager.markAllAsRead();
         System.out.println("\nUnread Notifications After Marking All as Read:");
         System.out.println(notificationManager.countUnreadNotifications());
-
-
-   }
+    }
 }
