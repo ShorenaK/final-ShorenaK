@@ -2,7 +2,7 @@
 Name: Shorena K. Anzhilov
 Assignment:  Final Lab -- CallingOut App  
 Date: 11.27.2024
-Notes: NotificationManager.java
+Notes: NotificationInterface.java
 ******/
 
 
