@@ -34,6 +34,20 @@ public class Main {
         CallOut callOut = sender.sendCallout("We need to discuss before we lose each other.", receiver);
         globalCallOuts.addCallOut(callOut);
 
+        
+        System.out.println("\nTesting CallOutList with added CallOut:");
+        System.out.println("Added CallOut with ID: " + callOut.getId());
+
+        // Search for the CallOut by ID
+        CallOut retrievedCallOut = globalCallOuts.findCalloutById(callOut.getId());
+        if (retrievedCallOut != null) {
+            System.out.println("Retrieved CallOut: " + retrievedCallOut);
+        } else {
+            System.out.println("CallOut not found in the list!");
+        }
+        
+        
+        
         // Display the CallingOut
         System.out.println("\nDisplaying the CallingOut:");
         globalCallOuts.displayCallOuts();
