@@ -33,33 +33,24 @@ public class Main {
         CallOutList globalCallOuts = new CallOutList();
         CallOut callOut = sender.sendCallout("We need to discuss before we lose each other.", receiver);
         globalCallOuts.addCallOut(callOut);
-
-        
-        System.out.println("\nTesting CallOutList with added CallOut:");
-        System.out.println("Added CallOut with ID: " + callOut.getId());
-
-        // Search for the CallOut by ID
-        CallOut retrievedCallOut = globalCallOuts.findCalloutById(callOut.getId());
-        if (retrievedCallOut != null) {
-            System.out.println("Retrieved CallOut: " + retrievedCallOut);
-        } else {
-            System.out.println("CallOut not found in the list!");
-        }
-        
-        
         
         // Display the CallingOut
         System.out.println("\nDisplaying the CallingOut:");
-        globalCallOuts.displayCallOuts();
+        globalCallOuts.addCallOut(callOut);
 
         // Add Replies to the CallOut
         System.out.println("\n**** ---- **** Adding replies to the CallingOut. **** ---- ****");
-        String calloutId = callOut.getId();
+        String calloutId = callOut.getId();        
 
         receiver.replyToCallout(calloutId, "I agree. When can we talk?");
         sender.replyToCallout(calloutId, "How about tomorrow evening?");
         receiver.replyToCallout(calloutId, "Tomorrow evening works for me.");
 
+
+
+        // System.out.println("\nTesting CallOutList with added CallOut:");
+        // System.out.println("Added CallOut with ID: " + callOut.getId());
+        
         // Display the CallOut with Replies
         System.out.println("\nDisplaying the CallingOut with Replies:");
         CallOut foundCallOut = globalCallOuts.findCalloutById(calloutId);
