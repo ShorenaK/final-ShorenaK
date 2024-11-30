@@ -145,11 +145,17 @@ public class Main {
         notificationManager.addNotification(new PhoneNotification(receiver, "111-111-1111", "Reminder: You have a pending CallOut."));
         notificationManager.addNotification(new EmailNotification(receiver, "Urgent", "We need to finish our discussion."));
 
-        // View and Count Notifications
+        // Viewing All Notifications
+        System.out.println("All notifications After adding more notifications:");
+        notificationManager.getNotificationMessages().forEach(System.out::println);
+        
+        // Filter Unread Notifications
         System.out.println("\nUnread Notifications:");
         List<NotificationInterface> filteredUnread = notificationManager.getUnreadNotifications();
         filteredUnread.forEach(notification -> System.out.println(notification.getMessage()));
 
+
+        // Count Unread Notifications (Reduce Example)
         System.out.println("\nCount of Unread Notifications:");
         System.out.println(notificationManager.countUnreadNotifications());
 
