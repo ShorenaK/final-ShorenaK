@@ -79,15 +79,28 @@ public class Main {
         }
 
         // Add Reactions to the CallOut
-        System.out.println("\n*** ---- **** Adding reactions to the CallOut. *** ---- ****");
+        System.out.println("\n*** ---- **** Adding reactions to the CallingOut. *** ---- ****");
         receiver.reactToCallout(calloutId, ReactionType.LIKE, globalCallOuts);
         sender.reactToCallout(calloutId, ReactionType.LOVE, globalCallOuts);
 
         // Display the CallOut with Reactions
-        System.out.println("\nDisplaying the CallOut with Reactions:");
+        System.out.println("\nDisplaying the CallingOut with Reactions:");
         if (foundCallOut != null) {
             System.out.println(foundCallOut);
             System.out.println("Reactions:");
+            for (Reaction reaction : foundCallOut.getReactions()) {
+                reaction.display();
+            }
+        }
+
+        // Adding More Reactions
+        System.out.println("\n*** ---- **** Adding more reactions. *** ---- ****");
+        receiver.reactToCallout(calloutId, ReactionType.LAUGH, globalCallOuts);
+        sender.reactToCallout(calloutId, ReactionType.SAD, globalCallOuts);
+
+        // Displaying Updated Reactions
+        System.out.println("\nDisplaying Updated Reactions:");
+        if (foundCallOut != null) {
             for (Reaction reaction : foundCallOut.getReactions()) {
                 reaction.display();
             }
@@ -98,7 +111,7 @@ public class Main {
         NotificationManager notificationManager = new NotificationManager();
 
         // Create Notifications
-        EmailNotification emailNotification = new EmailNotification(receiver, "Important", "Please reply to the CallOut.");
+        EmailNotification emailNotification = new EmailNotification(receiver, "Important", "Please reply to the CallingOut.");
         PhoneNotification phoneNotification = new PhoneNotification(receiver, "111-111-1111", "We need to talk soon.");
 
         // Add Notifications to Manager and User
