@@ -5,17 +5,17 @@ Date: 11.27.2024
 Notes: Main.java
 ******/
 
+
 import java.util.List;
 
 /**
- * The entry point of the application.
- * Demonstrates the functionality of the system, including users, CallingOuts, replies, reactions, and notifications.
+ * Entry point of the application.
+ * Demonstrates the functionality of the CallingOut system, including users, CallOuts, replies, reactions, and notifications.
  */
 public class Main {
 
     /**
-     * The main method, which drives the program execution.
-     * Demonstrates the creation of users, CallingOuts, nested replies, reactions, and the notification system.
+     * The main method that drives the program execution.
      *
      * @param args command-line arguments (not used)
      */
@@ -28,43 +28,38 @@ public class Main {
         System.out.println(sender);
         System.out.println(receiver);
 
-        // Send a CallingOut
+        // Create and Send a CallOut
         System.out.println("\n**** ---- **** Sending a CallingOut. **** ---- ****");
-        CallOutList globalCallOuts = new CallOutList();
+        CallOutList globalCallOuts = new CallOutList(); 
         CallOut callOut = sender.sendCallout("We need to discuss before we lose each other.", receiver);
-        globalCallOuts.addCallOut(callOut);
-        
-        // Display the CallingOut
-        System.out.println("\nDisplaying the CallingOut:");
-        globalCallOuts.addCallOut(callOut);
+        globalCallOuts.addCallOut(callOut); 
+
+        // Display only the CallOut message
+        System.out.println("CallingOut Message: " + callOut.getContent());
 
         // Add Replies to the CallOut
         System.out.println("\n**** ---- **** Adding replies to the CallingOut. **** ---- ****");
-        String calloutId = callOut.getId();        
+        String calloutId = callOut.getId();
 
-        receiver.replyToCallout(calloutId, "I agree. When can we talk?");
-        sender.replyToCallout(calloutId, "How about tomorrow evening?");
-        receiver.replyToCallout(calloutId, "Tomorrow evening works for me.");
+        // Add replies to the CallOut
+        receiver.replyToCallout(calloutId, "I agree. When can we talk?", globalCallOuts);
+        sender.replyToCallout(calloutId, "How about tomorrow evening?", globalCallOuts);
+        receiver.replyToCallout(calloutId, "Tomorrow evening works for me.", globalCallOuts);
 
-
-
-        // System.out.println("\nTesting CallOutList with added CallOut:");
-        // System.out.println("Added CallOut with ID: " + callOut.getId());
-        
         // Display the CallOut with Replies
         System.out.println("\nDisplaying the CallingOut with Replies:");
-        CallOut foundCallOut = globalCallOuts.findCalloutById(calloutId);
+        CallOut foundCallOut = globalCallOuts.findCalloutById(calloutId); 
         if (foundCallOut != null) {
-            System.out.println(foundCallOut);
+            System.out.println("CallingOut Message: " + foundCallOut.getContent()); 
             System.out.println("Replies:");
             for (Reply reply : foundCallOut.getReplies()) {
-                reply.displayReplies(0);
+                reply.displayReplies(0); 
             }
         } else {
             System.out.println("CallingOut not found.");
         }
 
-        // Adding More Replies to Test Nested Replies
+        // Add Nested Replies to Test Hierarchical Structure
         System.out.println("\n**** ---- **** Adding more nested replies. **** ---- ****");
         if (foundCallOut != null) {
             Reply initialReply = new Reply(sender, "What about next week?");
@@ -83,27 +78,27 @@ public class Main {
             }
         }
 
-        // Add Reactions to the CallOut
+        // Add Reactions to the CallingOut
         System.out.println("\n**** ---- **** Adding reactions to the CallingOut. **** ---- ****");
         receiver.reactToCallout(calloutId, ReactionType.LIKE, globalCallOuts);
         sender.reactToCallout(calloutId, ReactionType.LOVE, globalCallOuts);
 
-        // Display the CallOut with Reactions
+        // Display the CallingOut with Reactions
         System.out.println("\nDisplaying the CallingOut with Reactions:");
         if (foundCallOut != null) {
-            System.out.println(foundCallOut);
+            System.out.println(foundCallOut.getContent());
             System.out.println("Reactions:");
             for (Reaction reaction : foundCallOut.getReactions()) {
-                reaction.display();
+                reaction.display(); 
             }
         }
 
-        // Adding More Reactions
+        // Add Additional Reactions
         System.out.println("\n**** ---- **** Adding more reactions. **** ---- ****");
         receiver.reactToCallout(calloutId, ReactionType.LAUGH, globalCallOuts);
         sender.reactToCallout(calloutId, ReactionType.SAD, globalCallOuts);
 
-        // Displaying Updated Reactions
+        // Display Updated Reactions
         System.out.println("\nDisplaying Updated Reactions:");
         if (foundCallOut != null) {
             for (Reaction reaction : foundCallOut.getReactions()) {
@@ -144,22 +139,21 @@ public class Main {
         System.out.println("All notifications:");
         notificationManager.getNotificationMessages().forEach(System.out::println);
 
-        // Add and Display Notifications
+        // Add Additional Notifications
         System.out.println("\n**** ---- **** Adding multiple notifications. **** ---- ****");
         notificationManager.addNotification(new EmailNotification(receiver, "Follow Up", "Are we meeting tomorrow?"));
         notificationManager.addNotification(new PhoneNotification(receiver, "111-111-1111", "Reminder: You have a pending CallOut."));
         notificationManager.addNotification(new EmailNotification(receiver, "Urgent", "We need to finish our discussion."));
 
-        // Viewing All Notifications
-        System.out.println("All notifications After adding more notifications:");
+        // View All Notifications
+        System.out.println("All notifications after adding more:");
         notificationManager.getNotificationMessages().forEach(System.out::println);
-        
-        // Filter Unread Notifications
+
+        // Filter, View and Count Unread Notifications
         System.out.println("\nUnread Notifications:");
         List<NotificationInterface> filteredUnread = notificationManager.getUnreadNotifications();
         filteredUnread.forEach(notification -> System.out.println(notification.getMessage()));
 
-        // Count Unread Notifications (Reduce Example)
         System.out.println("\nCount of Unread Notifications:");
         System.out.println(notificationManager.countUnreadNotifications());
 

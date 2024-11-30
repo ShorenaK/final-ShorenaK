@@ -107,18 +107,18 @@ public class User {
      * @param calloutId the ID of the CallOut to reply to
      * @param message  the reply message
      */
-    public void replyToCallout(String calloutId, String message) {
-        System.out.println("Replying to CallOut with ID: " + calloutId);
-        CallOut callOut = callOuts.findCalloutById(calloutId);
-        if (callOut != null) {
-            Reply reply = new Reply(this, message);
-            callOut.addReply(reply);
-            System.out.println("Reply added: " + message);
-        } else {
-            System.out.println("CallOut with ID " + calloutId + " not found.");
-        }
-    }
-
+    public void replyToCallout(String calloutId, String message, CallOutList callOutList) {
+        //        System.out.println("Replying to CallOut with ID: " + calloutId);
+                CallOut callOut = callOutList.findCalloutById(calloutId);
+                if (callOut != null) {
+                    Reply reply = new Reply(this, message);
+                    callOut.addReply(reply);
+                    System.out.println("Reply added: " + message);
+                } else {
+                    System.out.println("CallOut with ID " + calloutId + " not found.");
+                }
+            }
+            
     /**
      * Reacts to a specific CallOut identified by its ID.
      *
