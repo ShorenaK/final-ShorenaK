@@ -25,7 +25,7 @@ public abstract class AbstractNotification implements NotificationInterface {
      * Automatically generates a unique ID and sets the timestamp to the current time.
      *
      * @param targetUser the user who will receive the notification
-     * @param message    the content of the notification
+     * @param message the content of the notification
      */
     public AbstractNotification(User targetUser, String message) {
         this.notificationId = UUID.randomUUID().toString(); // Generate unique ID

@@ -30,9 +30,9 @@ public class CallOut implements UserAction {
      * Constructs a CallOut with a sender, receiver, and content.
      * Initializes the CallOut with a unique ID, a timestamp, and a status of PENDING.
      *
-     * @param sender   the user who created the CallOut
+     * @param sender the user who created the CallOut
      * @param receiver the user who is the recipient of the CallOut
-     * @param content  the content of the CallOut
+     * @param content the content of the CallOut
      */
     public CallOut(User sender, User receiver, String content) {
         this.id = UUID.randomUUID().toString();
