@@ -24,17 +24,17 @@ public class Main {
         User sender = new User("Shorena", "Shorena@gmail.com");
         User receiver = new User("Sister", "Sister@gmail.com");
 
-        System.out.println("**** ---- **** Testing user creation. **** ---- **** ");
+        System.out.println("\n**** ---- **** Testing user creation. **** ---- **** ");
 
         // Display User's specific attributes
         System.out.println("\nSender Info: " + "Name: " + sender.getName() + " & " + "Email Addresses: " + sender.getEmail());
         System.out.println("Receiver Info: " + "Name: " + receiver.getName() + " & " + "Email Addresses: " + receiver.getEmail());
 
-
+        System.out.println("\n**** ---- **** Display User's full details. **** ---- **** ");
         // Display User's full details using toString()
         System.out.println("\nSender Details: " + sender);
         System.out.println("Receiver Details: " + receiver);
-        
+
         // Create and Send a CallOut
         System.out.println("\n**** ---- **** Sending a CallingOut. **** ---- ****");
         CallOutList globalCallOuts = new CallOutList(); 
