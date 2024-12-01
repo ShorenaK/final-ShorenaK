@@ -25,6 +25,14 @@ public class Main {
         User receiver = new User("Sister", "Sister@gmail.com");
 
         System.out.println("**** ---- **** Testing user creation. **** ---- **** ");
+
+        // Display User's specific attributes
+        System.out.println("\nSender Info: " + "Name: " + sender.getName() + " & " + "Email Addresses: " + sender.getEmail());
+        System.out.println("Receiver Info: " + "Name: " + receiver.getName() + " & " + "Email Addresses: " + receiver.getEmail());
+
+
+
+
         System.out.println(sender);
         System.out.println(receiver);
 
