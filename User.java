@@ -108,7 +108,6 @@ public class User {
      * @param message  the reply message
      */
     public void replyToCallout(String calloutId, String message, CallOutList callOutList) {
-        //        System.out.println("Replying to CallOut with ID: " + calloutId);
                 CallOut callOut = callOutList.findCalloutById(calloutId);
                 if (callOut != null) {
                     Reply reply = new Reply(this, message);

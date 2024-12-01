@@ -53,9 +53,7 @@ public class CallOutList {
     public CallOut findCalloutById(String id) {
         CallOutNode current = head;
         while (current != null) {
-//            System.out.println("Checking CallOut ID: " + current.getCallOut().getId());
             if (current.getCallOut().getId().equals(id)) {
-//                System.out.println("Match found for ID: " + id);
                 return current.getCallOut();
             }
             current = current.getNext();
