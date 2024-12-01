@@ -14,10 +14,8 @@ import java.util.List;
  * and reacting to call-outs.
  */
 public class User {
-    // User's name
-    private String name;
 
-    // User's email address
+    private String name;
     private String email;
 
     // List of notifications associated with the user

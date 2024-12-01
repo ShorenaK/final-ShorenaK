@@ -10,7 +10,7 @@ Notes: Reaction.java
  * Inherits from {@link AbstractUserContent} and includes the type of reaction.
  */
 public class Reaction extends AbstractUserContent {
-    // The type of reaction (e.g., LIKE, DISLIKE, etc.)
+
     private ReactionType reactionType;
 
     /**

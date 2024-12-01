@@ -11,7 +11,7 @@ Notes: CallOutList.java
  * Provides methods to add, remove, find, display, and count CallOuts in the list.
  */
 public class CallOutList {
-    // The head node of the CallOut linked list
+    
     private CallOutNode head;
 
     /**
@@ -70,7 +70,7 @@ public class CallOutList {
      */
     public boolean removeCallOutById(String id) {
         if (head == null) {
-            return false; // List is empty
+            return false;
         }
 
         // If the head needs to be removed
@@ -89,7 +89,7 @@ public class CallOutList {
             current = current.getNext();
         }
 
-        return false; // ID not found
+        return false; 
     }
 
     /**

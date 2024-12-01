@@ -13,8 +13,6 @@ Notes: CallOutNode.java
 public class CallOutNode {
     // The CallOut object stored in this node
     private CallOut callOut;
-
-    // The next node in the linked list
     private CallOutNode next;
 
     /**
