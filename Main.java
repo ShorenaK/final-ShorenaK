@@ -31,11 +31,10 @@ public class Main {
         System.out.println("Receiver Info: " + "Name: " + receiver.getName() + " & " + "Email Addresses: " + receiver.getEmail());
 
 
-
-
-        System.out.println(sender);
-        System.out.println(receiver);
-
+        // Display User's full details using toString()
+        System.out.println("\nSender Details: " + sender);
+        System.out.println("Receiver Details: " + receiver);
+        
         // Create and Send a CallOut
         System.out.println("\n**** ---- **** Sending a CallingOut. **** ---- ****");
         CallOutList globalCallOuts = new CallOutList(); 
