@@ -37,9 +37,9 @@ public class Main {
 
         // Create and Send a CallOut
         System.out.println("\n**** ---- **** Sending a CallingOut. **** ---- ****");
-        CallOutList globalCallOuts = new CallOutList(); 
+        CallOutList globalCallOuts = new CallOutList();
         CallOut callOut = sender.sendCallout("We need to discuss before we lose each other.", receiver);
-        globalCallOuts.addCallOut(callOut); 
+        globalCallOuts.addCallOut(callOut);
 
         // Display only the CallOut message
         System.out.println("CallingOut Message: " + callOut.getContent());
@@ -48,19 +48,18 @@ public class Main {
         System.out.println("\n**** ---- **** Adding replies to the CallingOut. **** ---- ****");
         String calloutId = callOut.getId();
 
-        // Add replies to the CallOut
         receiver.replyToCallout(calloutId, "I agree. When can we talk?", globalCallOuts);
         sender.replyToCallout(calloutId, "How about tomorrow evening?", globalCallOuts);
         receiver.replyToCallout(calloutId, "Tomorrow evening works for me.", globalCallOuts);
 
         // Display the CallOut with Replies
         System.out.println("\nDisplaying the CallingOut with Replies:");
-        CallOut foundCallOut = globalCallOuts.findCalloutById(calloutId); 
+        CallOut foundCallOut = globalCallOuts.findCalloutById(calloutId);
         if (foundCallOut != null) {
-            System.out.println("CallingOut Message: " + foundCallOut.getContent()); 
-            System.out.println("Replies:");
+            System.out.println("CallingOut Message: " + foundCallOut.getContent());
+            System.out.println("\nAll Replies:");
             for (Reply reply : foundCallOut.getReplies()) {
-                reply.displayReplies(0); 
+                reply.displayReplies(0);
             }
         } else {
             System.out.println("CallingOut not found.");
@@ -79,24 +78,24 @@ public class Main {
             nestedReply1.addReply(nestedReply2);
 
             // Display All Replies with Nesting
-            System.out.println("\nDisplaying All Replies:");
+            System.out.println("\nDisplaying All Replies with Nesting:");
             for (Reply reply : foundCallOut.getReplies()) {
                 reply.displayReplies(0);
             }
         }
 
-        // Add Reactions to the CallingOut
+        // Add Reactions to the CallOut
         System.out.println("\n**** ---- **** Adding reactions to the CallingOut. **** ---- ****");
         receiver.reactToCallout(calloutId, ReactionType.LIKE, globalCallOuts);
         sender.reactToCallout(calloutId, ReactionType.LOVE, globalCallOuts);
 
-        // Display the CallingOut with Reactions
+        // Display the CallOut with Reactions
         System.out.println("\nDisplaying the CallingOut with Reactions:");
         if (foundCallOut != null) {
-            System.out.println(foundCallOut.getContent());
-            System.out.println("Reactions:");
+            System.out.println("\nInitial message: " + foundCallOut.getContent());
+            System.out.println("\nDisplay Reactions:");
             for (Reaction reaction : foundCallOut.getReactions()) {
-                reaction.display(); 
+                reaction.display();
             }
         }
 
@@ -113,12 +112,12 @@ public class Main {
             }
         }
 
-        // Test Notification System
+        // This is Section below is all about Testing Notification System!
         System.out.println("\n**** ---- **** Testing notifications. **** ---- ****");
         NotificationManager notificationManager = new NotificationManager();
 
         // Create Notifications
-        EmailNotification emailNotification = new EmailNotification(receiver, "Important", "Please reply to the CallingOut.");
+        EmailNotification emailNotification = new EmailNotification(receiver, "Important", "Please reply to the CallingOut ASAP.");
         PhoneNotification phoneNotification = new PhoneNotification(receiver, "111-111-1111", "We need to talk soon.");
 
         // Add Notifications to Manager and User
@@ -153,7 +152,7 @@ public class Main {
         notificationManager.addNotification(new EmailNotification(receiver, "Urgent", "We need to finish our discussion."));
 
         // View All Notifications
-        System.out.println("All notifications after adding more:");
+        System.out.println("\nAll notifications after adding more:");
         notificationManager.getNotificationMessages().forEach(System.out::println);
 
         // Filter, View and Count Unread Notifications
